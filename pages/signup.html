@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - FoodMarket</title>
+    <link rel="stylesheet" href="../public/css/login.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="login-container">
+
+        <div class="login-left">
+            <div class="welcome-text">
+                <h1>Join Faraz Mart</h1>
+                <p>Create an account to order delicious food from your favorite restaurants or become a vendor and grow
+                    your business.</p>
+
+                <div class="features">
+                    <div class="feature-item">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Quick Registration</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-store"></i>
+                        <span>Start Your Food Business</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-truck"></i>
+                        <span>Fast Delivery Network</span>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Growth Analytics</span>
+                    </div>
+                </div>
+
+                <div class="already-account"
+                    style="margin-top: 40px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 10px;">
+                    <p style="margin-bottom: 10px;">Already have an account?</p>
+                    <a href="login.html" class="btn btn-secondary"
+                        style="display: inline-block; text-decoration: none;">
+                        <i class="fas fa-sign-in-alt"></i> Login Now
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="login-right">
+            <div class="login-header">
+                <div class="logo">Faraz Mart</div>
+                <h2>Create Account</h2>
+                <p>Fill in your details to get started</p>
+            </div>
+
+
+            <div id="message" class="message" style="display: none;"></div>
+
+
+            <form class="login-form" id="signupForm" onsubmit="signup(event)">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" id="firstName" class="form-input" placeholder=" " required>
+                            <label class="form-label">First Name</label>
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" id="lastName" class="form-input" placeholder=" " required>
+                            <label class="form-label">Last Name</label>
+                           
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" id="email" class="form-input" placeholder=" " required>
+                    <label class="form-label">Email Address</label>
+                    
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="password" id="password" class="form-input" placeholder=" " required>
+                            <label class="form-label">Password</label>
+                      
+                            <button type="button" class="password-toggle" onclick="togglePassword('password')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="password" id="confirmPassword" class="form-input" placeholder=" " required>
+                            <label class="form-label">Confirm Password</label>
+                           
+                            <button type="button" class="password-toggle" onclick="togglePassword('confirmPassword')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label" style="position: static; transform: none; margin-bottom: 10px;">Account
+                        Type</label>
+                    <div class="role-options">
+                        <label class="role-option">
+                            <input type="radio" name="role" value="user" checked>
+                            <div class="role-card">
+                                <i class="fas fa-user"></i>
+                                <h4>Customer</h4>
+                                <p>Order food from restaurants</p>
+                            </div>
+                        </label>
+                        <label class="role-option">
+                            <input type="radio" name="role" value="vendor">
+                            <div class="role-card">
+                                <i class="fas fa-store"></i>
+                                <h4>Vendor</h4>
+                                <p>Sell your food items</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="terms-checkbox">
+                        <input type="checkbox" id="terms" required>
+                        <span>I agree to the <a href="#">Terms & Conditions</a> and <a href="#">Privacy
+                                Policy</a></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+
+                <div class="login-footer">
+                    <p>Already have an account? <a href="login.html">Login here</a></p>
+                </div>
+            </form>
+
+            <div class="divider">
+                <span>Or sign up with</span>
+            </div>
+
+            <div class="social-login">
+                <button class="social-btn google">
+                    <i class="fab fa-google"></i> Google
+                </button>
+                <button class="social-btn facebook">
+                    <i class="fab fa-facebook"></i> Facebook
+                </button>
+                <button class="social-btn twitter">
+                    <i class="fab fa-twitter"></i> Twitter
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="/public/js/auth.js"></script>
+    <script>
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = input.parentElement.querySelector('.password-toggle i');
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+    </script>
+</body>
+
+</html>
