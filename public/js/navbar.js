@@ -15,10 +15,20 @@ document.addEventListener('DOMContentLoaded', function () {
         if (logoutBtn) logoutBtn.style.display = 'block';
 
         if (usernameSpan) {
+            let statusHtml = '';
+            if (user.role === 'vendor') {
+                const statusText = user.isVerified ? 'Verified' : 'Unverified';
+                const statusColor = user.isVerified ? '#28a745' : '#dc3545'; // Green for verified, Red for unverified
+                statusHtml = `<small style="background-color: white; color: ${statusColor}; padding: 2px 8px; border-radius: 10px; font-weight: bold; font-size: 0.75em; display: inline-block; margin-top: 4px;">${statusText}</small>`;
+            }
+
             usernameSpan.innerHTML = `
-                <span style="color: white; margin-left: 15px; font-weight: bold;">
-                    <i class="fas fa-user-circle"></i> Welcome, ${user.name || 'User'}
-                </span>
+                <div style="display: inline-flex; flex-direction: column; align-items: flex-start; vertical-align: middle; margin-left: 15px;">
+                    <span style="color: white; font-weight: bold;">
+                        <i class="fas fa-user-circle"></i> Welcome, ${user.name || 'User'}
+                    </span>
+                    ${statusHtml}
+                </div>
             `;
         }
 

@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  
+
     <div class="dashboard-header">
         <h1>
             <i class="fas fa-store"></i>
@@ -39,12 +39,7 @@
         <button class="tab-btn" onclick="showTab('products')">
             <i class="fas fa-utensils"></i> Products
         </button>
-        <button class="tab-btn" onclick="showTab('orders')">
-            <i class="fas fa-shopping-bag"></i> Orders
-        </button>
-        <button class="tab-btn" onclick="showTab('analytics')">
-            <i class="fas fa-chart-line"></i> Analytics
-        </button>
+
     </div>
 
     <!-- Shop Tab -->
@@ -139,7 +134,7 @@
 
     <script>
         function showTab(tabName) {
-          
+
             document.querySelectorAll('[id$="Tab"]').forEach(tab => {
                 tab.style.display = 'none';
             });
