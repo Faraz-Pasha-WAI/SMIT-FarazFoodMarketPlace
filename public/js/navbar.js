@@ -89,12 +89,12 @@ async function handleLogout() {
             await firebase.auth().signOut();
         }
 
-        window.location.href = '/pages/login.html';
+        window.location.href = 'login.html';
 
     } catch (error) {
         console.error("Logout error:", error);
         localStorage.removeItem('user');
-        window.location.href = '/pages/login.html';
+        window.location.href = 'login.html';
     }
 }
 

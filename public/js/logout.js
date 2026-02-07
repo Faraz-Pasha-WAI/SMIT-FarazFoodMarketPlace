@@ -4,7 +4,7 @@ import { signOut } from
 
 window.logout = function () {
   signOut(auth).then(() => {
-    window.location.href = "/pages/login.html";
+    window.location.href = "login.html";
   }).catch((error) => {
     alert(error.message);
   });

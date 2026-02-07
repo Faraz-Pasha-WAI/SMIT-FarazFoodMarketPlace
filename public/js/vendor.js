@@ -12,7 +12,7 @@ onAuthStateChanged(auth, async (user) => {
     await loadVendorProfile(user.uid);
     await initShop(user.uid);
   } else {
-    window.location.href = "../pages/login.html";
+    window.location.href = "login.html";
   }
 });
 
@@ -215,7 +215,7 @@ window.logout = async function () {
   try {
     await signOut(auth);
     localStorage.removeItem('user');
-    window.location.href = "../pages/login.html";
+    window.location.href = "login.html";
   } catch (error) {
     console.error("Logout error", error);
   }
