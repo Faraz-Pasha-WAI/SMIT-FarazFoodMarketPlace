@@ -17,9 +17,9 @@ onAuthStateChanged(auth, async (user) => {
                 if (snap.exists()) {
                     const userData = snap.data();
                     if (userData.role === "admin") {
-                        window.location.href = "/pages/admin.html";
+                        window.location.href = "../pages/admin.html";
                     } else if (userData.role === "vendor" && userData.isVerified) {
-                        window.location.href = "/pages/vendor.html";
+                        window.location.href = "../pages/vendor.html";
                     } else {
                         window.location.href = "/pages/home.html";
                     }
@@ -33,7 +33,7 @@ onAuthStateChanged(auth, async (user) => {
 
     if (!user && !currentPage.includes("home.html") && !currentPage.includes("index.html")) {
         console.log("No user, redirecting to login...");
-        window.location.href = "/pages/login.html";
+        window.location.href = "../pages/login.html";
         return;
     }
 
@@ -54,17 +54,17 @@ onAuthStateChanged(auth, async (user) => {
 
             if (currentPage.includes("admin.html") && role !== "admin") {
                 alert("Access denied. Admin only!");
-                window.location.href = "/pages/home.html";
+                window.location.href = "../pages/home.html";
                 return;
             }
 
             if (currentPage.includes("vendor.html")) {
                 if (role !== "vendor") {
                     alert("Access denied. Vendor only!");
-                    window.location.href = "/pages/home.html";
+                    window.location.href = "../pages/home.html";
                 } else if (!verified) {
                     alert("Your vendor account is pending admin verification!");
-                    window.location.href = "/pages/home.html";
+                    window.location.href = "../pages/home.html";
                 }
             }
 

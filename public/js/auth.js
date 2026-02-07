@@ -244,16 +244,16 @@ function processLogin(userData, role, isVerified, userName, selectedRole, btn, o
 
     setTimeout(() => {
         if (role === "admin") {
-            window.location.href = "/pages/admin.html";
+            window.location.href = "../pages/admin.html";
         } else if (role === "vendor") {
             if (isVerified === true) {
-                window.location.href = "/pages/vendor.html";
+                window.location.href = "../pages/vendor.html";
             } else {
                 showMessage("Your vendor account is pending admin approval. Please wait for verification.", "warning");
-                window.location.href = "/pages/home.html";
+                window.location.href = "../pages/home.html";
             }
         } else {
-            window.location.href = "/pages/home.html";
+            window.location.href = "../pages/home.html";
         }
     }, 1000);
 }
