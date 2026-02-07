@@ -23,12 +23,12 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         if (user.role === 'admin') {
-            addNavLink('Admin', '../pages/admin.html', 'fa-user-shield');
+            addNavLink('Admin', '/pages/admin.html', 'fa-user-shield');
         } else if (user.role === 'vendor' && user.isVerified) {
-            addNavLink('Vendor', '../pages/vendor.html', 'fa-store');
+            addNavLink('Vendor', '/pages/vendor.html', 'fa-store');
         } else {
             if (user.role === 'user') {
-                addNavLink('Become a Vendor', '../pages/signup.html', 'fa-handshake');
+                addNavLink('Become a Vendor', '/pages/signup.html', 'fa-handshake');
             }
         }
 
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
         removeNavLink('Admin');
         removeNavLink('Vendor');
 
-        addNavLink('Become a Vendor', '../pages/signup.html', 'fa-handshake');
+        addNavLink('Become a Vendor', '/pages/signup.html', 'fa-handshake');
     }
 
     if (logoutBtn) {
@@ -89,12 +89,12 @@ async function handleLogout() {
             await firebase.auth().signOut();
         }
 
-        window.location.href = '../pages/login.html';
+        window.location.href = '/pages/login.html';
 
     } catch (error) {
         console.error("Logout error:", error);
         localStorage.removeItem('user');
-        window.location.href = '../pages/login.html';
+        window.location.href = '/pages/login.html';
     }
 }
 

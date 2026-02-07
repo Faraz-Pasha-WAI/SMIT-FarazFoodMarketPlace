@@ -85,11 +85,11 @@ window.logout = async function () {
       await firebase.auth().signOut();
     }
     localStorage.removeItem('user');
-    window.location.href = "../pages/login.html";
+    window.location.href = "/pages/login.html";
   } catch (error) {
     console.error("Logout error", error);
     localStorage.removeItem('user');
-    window.location.href = "../pages/login.html";
+    window.location.href = "/pages/login.html";
   }
 };
 

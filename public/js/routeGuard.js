@@ -17,9 +17,9 @@ onAuthStateChanged(auth, async (user) => {
                 if (snap.exists()) {
                     const userData = snap.data();
                     if (userData.role === "admin") {
-                        window.location.href = "../pages/admin.html";
+                        window.location.href = "/pages/admin.html";
                     } else if (userData.role === "vendor" && userData.isVerified) {
-                        window.location.href = "../pages/vendor.html";
+                        window.location.href = "/pages/vendor.html";
                     } else {
                         window.location.href = "/pages/home.html";
                     }
