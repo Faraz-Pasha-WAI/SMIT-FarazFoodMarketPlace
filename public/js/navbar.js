@@ -2,8 +2,25 @@ import { auth, db } from "./firebase.js";
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+function updateCartBadge() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const totalItems = cart.reduce((total, item) => total + (item.quantity || 1), 0);
+    const badge = document.getElementById('cartBadge');
+    if (badge) {
+        badge.innerText = totalItems;
+        if (totalItems > 0) {
+            badge.style.setProperty('display', 'inline-block', 'important');
+        } else {
+            badge.style.setProperty('display', 'none', 'important');
+        }
+    }
+}
+
+window.updateCartBadge = updateCartBadge;
+
 document.addEventListener('DOMContentLoaded', function () {
     console.log("navbar.js loaded");
+    updateCartBadge();
 
     const user = JSON.parse(localStorage.getItem('user'));
     const loginBtn = document.getElementById('loginBtn');

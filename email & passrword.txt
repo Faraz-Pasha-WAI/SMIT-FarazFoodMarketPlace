@@ -1,0 +1,5 @@
+Email. ID : admin@gmail.com
+Passrword : admin1
+
+Email. ID : vendor4@gmail.com	
+Password : vendor4

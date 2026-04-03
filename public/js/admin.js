@@ -79,8 +79,11 @@ window.toggleVendorStatus = async function (uid, newStatus) {
   }
 }
 
+// directly html sy logout button add karny k liye
 window.logout = async function () {
   try {
+
+    // firease instance check , kia user exsist he ya not
     if (typeof firebase !== 'undefined' && firebase.auth) {
       await firebase.auth().signOut();
     }

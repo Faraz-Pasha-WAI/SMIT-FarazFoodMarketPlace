@@ -4,6 +4,8 @@ import { onAuthStateChanged } from
 import { doc, getDoc }
     from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+
+
 const currentPage = window.location.pathname;
 
 onAuthStateChanged(auth, async (user) => {

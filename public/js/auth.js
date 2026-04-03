@@ -4,6 +4,8 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword }
 import { doc, setDoc, getDoc, query, where, collection, getDocs, deleteDoc }
     from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
 
+// Removed fixed admin credentials as requested
+
 function showMessage(message, type = 'error') {
     console.log(`${type.toUpperCase()}: ${message}`);
     const messageDiv = document.getElementById('message');
@@ -27,9 +29,11 @@ window.login = async function (event) {
 
     const email = document.getElementById("email")?.value?.trim();
     const password = document.getElementById("password")?.value;
-    const selectedRole = document.querySelector('input[name="role"]:checked')?.value || "user";
+    const selectedRole = document.querySelector('input[name="role"]:checked')?.value;
 
     console.log("Email:", email, "Role:", selectedRole);
+
+
 
     if (!email || !password) {
         showMessage("Please fill in all fields!");
@@ -86,7 +90,8 @@ window.login = async function (event) {
         processLogin(userData, userData.role, userData.isVerified, userData.fullName || userData.name, selectedRole, btn, originalText, email, uid);
 
     } catch (error) {
-        console.error("Login error:", error);
+        console.log("Login error:", error);
+
         let errorMessage = "Login failed! ";
 
         switch (error.code) {
@@ -224,8 +229,12 @@ window.signup = async function (event) {
 };
 
 function processLogin(userData, role, isVerified, userName, selectedRole, btn, originalText, email, uid) {
-    if (selectedRole !== role) {
-        showMessage(`Please login as ${role} from the role selection!`);
+    if (role !== 'admin' && selectedRole !== role) {
+        if (!selectedRole) {
+            showMessage(`This account has the role "${role}". Please select "${role}" to log in, or contact an administrator.`);
+        } else {
+            showMessage(`Role mismatch! This account is registered as "${role}". Please select "${role}" from the role selection.`);
+        }
 
         if (btn) {
             btn.innerHTML = originalText;

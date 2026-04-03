@@ -21,6 +21,73 @@ function hideLoader() {
     }
 }
 
+const dummyProducts = [
+    {
+        id: 'dummy-1',
+        name: 'Burger Deluxe',
+        price: 850,
+        category: 'burger',
+        images: ['../public/images/products/burger.png'],
+        description: 'Juicy beef patty with premium cheese and fresh vegetables.'
+    },
+    {
+        id: 'dummy-2',
+        name: 'Pepperoni Pizza',
+        price: 1200,
+        category: 'pizza',
+        images: ['../public/images/products/pizza.png'],
+        description: 'Classic pepperoni with mozzarella cheese and tomato sauce.'
+    },
+    {
+        id: 'dummy-3',
+        name: 'Crispy Fries',
+        price: 350,
+        category: 'fries',
+        images: ['../public/images/products/fries.png'],
+        description: 'Golden brown crispy fries with a touch of sea salt.'
+    },
+    {
+        id: 'dummy-4',
+        name: 'Sushi Platter',
+        price: 2500,
+        category: 'general',
+        images: ['../public/images/products/sushi.png'],
+        description: 'Assorted fresh sushi rolls with wasabi and ginger.'
+    },
+    {
+        id: 'dummy-5',
+        name: 'Pasta Carbonara',
+        price: 950,
+        category: 'general',
+        images: ['../public/images/products/pasta.png'],
+        description: 'Creamy pasta with smoked pancetta and parmesan cheese.'
+    },
+    {
+        id: 'dummy-6',
+        name: 'Chocolate Lava Cake',
+        price: 550,
+        category: 'general',
+        images: ['../public/images/products/cake.png'],
+        description: 'Warm chocolate cake with a gooey molten center.'
+    },
+    {
+        id: 'dummy-7',
+        name: 'Strawberry Smoothie',
+        price: 450,
+        category: 'general',
+        images: ['https://images.unsplash.com/photo-1543648964-18ab2573d65a?q=80&w=800&auto=format&fit=crop'],
+        description: 'Refreshing blend of fresh strawberries and yogurt.'
+    },
+    {
+        id: 'dummy-8',
+        name: 'Grilled Chicken Salad',
+        price: 750,
+        category: 'general',
+        images: ['https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=800&auto=format&fit=crop'],
+        description: 'Healthy grilled chicken breast with organic greens.'
+    }
+];
+
 function initRealTimeProducts() {
     showLoader();
     const q = query(collection(db, "items"));
@@ -47,6 +114,9 @@ function initRealTimeProducts() {
                 description: data.description || ''
             });
         });
+
+        // Add dummy products
+        products = [...products, ...dummyProducts];
 
         console.log("Products updated:", products.length);
         filterProducts();
@@ -131,6 +201,9 @@ function addToCart(productId, productName, productPrice) {
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
+    if (window.updateCartBadge) {
+        window.updateCartBadge();
+    }
     showToast(`${productName} added to cart!`);
 }
 

@@ -4,6 +4,7 @@ import { signOut } from
 
 window.logout = function () {
   signOut(auth).then(() => {
+    // localStorage.removeItem("user");
     window.location.href = "login.html";
   }).catch((error) => {
     alert(error.message);
